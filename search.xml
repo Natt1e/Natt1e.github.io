@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>articletitle</title>
+      <link href="/2022/07/27/articletitle/"/>
+      <url>/2022/07/27/articletitle/</url>
+      
+        <content type="html"><![CDATA[<h1 id="如何利用Hexo-Github搭建博客"><a href="#如何利用Hexo-Github搭建博客" class="headerlink" title="如何利用Hexo+Github搭建博客"></a>如何利用Hexo+Github搭建博客</h1><p>在网上(如某乎)有着诸多教学的帖子。大致的流程如下：</p><ul><li>安装Node.js</li><li>安装Git</li><li>注册Github账号(包括连接Github与本地)</li><li>安装Hexo</li><li>具体操作</li></ul><p>网上的教程写的都很详细，我也不在此赘述，仅在此分享一些我在搭建过程中遇到的问题以及解决方案。</p><h1 id="问题以及解决方案"><a href="#问题以及解决方案" class="headerlink" title="问题以及解决方案"></a>问题以及解决方案</h1><h4 id="连接Github与本地"><a href="#连接Github与本地" class="headerlink" title="连接Github与本地"></a>连接Github与本地</h4><p>在教程中生成SSH的方法是：</p><pre class="line-numbers language-none"><code class="language-none">ssh-keygen -t rsa -C &quot;youremail&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>然后会说接下来一路按回车就可以。</p><p>但这会存在一些问题，比如你有多个Github账号，或已经生成过SSH，如何再生成一个呢？（保证之前生成的不会被覆盖）</p><p>在输入上述指令后，小黑窗会出现：</p><pre class="line-numbers language-none"><code class="language-none">Generating public&#x2F;private rsa key pair.Enter file in which to save the key(&#x2F;c&#x2F;Users&#x2F;**&#x2F;id_rsa)此处括号内是.ssh的路径:<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><p>如果在此处按回车，生成的密钥就会默认命名为id_rsa 和 id_rsa.pub</p><p>如果我们想生成多个，可以在冒号后面输入新的名字，如github_id_rsa</p><p>之后一直按回车就可以了。</p><p>在测试是否连接成功时，教程一般会让你输入如下指令：</p><pre class="line-numbers language-none"><code class="language-none">ssh -T git@github.com<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>如果出现了教程中的成功画面，那就皆大欢喜，但有可能像我一样出现如下代码：</p><pre class="line-numbers language-none"><code class="language-none">The authenticity of host &#39;github.com()&#39; can&#39;t be established.略略Are you sure you want to continue connecting(yes&#x2F;no&#x2F;[fingerprint])?<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><p>这里我们先输入yes</p><p>然后再次尝试：</p><pre class="line-numbers language-none"><code class="language-none">ssh -T git@github.com<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>此时有可能会出现：</p><pre class="line-numbers language-none"><code class="language-none">git@github.com:Permission denied(publickey)<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>妈的！怎么告诉我没有权限</p><p>此时为了解决这个问题，我们继续在小黑窗输入以下代码：</p><pre class="line-numbers language-none"><code class="language-none">ssh-agent bashssh-add ~&#x2F;.ssh&#x2F;your_id_rsa<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><p>.ssh&#x2F;后输入刚刚生成的文件的名字，如果是默认命名则为id_rsa</p><p>此时再执行那该死的</p><pre class="line-numbers language-none"><code class="language-none">ssh -T git@github.com<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>就可以显示出成功的界面啦~</p><h5 id="安装Node-js和Hexo"><a href="#安装Node-js和Hexo" class="headerlink" title="安装Node.js和Hexo"></a>安装Node.js和Hexo</h5><p>安装完Node.js后，教程会让你输入<code>node -v</code> 和 <code>npm -v</code>来检查版本以查看是否安装成功</p><p>执行<code>node -v</code>时还好，只出现了版本号</p><p>但在执行<code>npm -v</code>时，又出现了奇怪的东西 ：</p><pre class="line-numbers language-none"><code class="language-none">npm warn config global &#39;--global&#39;,&#39;--local&#39; are deprecated.use &#39;--location&#x3D;global&#39; instead.<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>当我执行到这时我只想骂街，怎么出这么多状况</p><p>为了让这个玩意消失，我在网上查了两种方法：</p><ul><li>方法一</li></ul><p>1.打开node.js的安装目录，找到npm.cmd文件</p><p>2.右键—-属性—-安全—–设置为完全可控</p><p>3.编辑：将后缀改成txt，将其中的prefix -g 改为prefix –location&#x3D;global，再改回cmd后缀，如果不执行第二步，此处会不让你修改</p><p>4.保存</p><p>经过一系列操作，我们再输入<code>npm -v</code>，就没有那行warn出现了！</p><p>但在教程后续操作中，可能还会出现，忽略即可</p><ul><li>方法二（未尝试）</li></ul><p>1.cmd小黑窗执行命令</p><pre class="line-numbers language-none"><code class="language-none">npm install -g npm-windows-upgrade<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>2.下载Windows Power Shell，以管理员身份运行，执行命令：</p><pre class="line-numbers language-none"><code class="language-none">set-ExecutionPolicy RemoteSigned<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>之后输入Y</p><p>3.在Windows Power Shell执行：</p><pre class="line-numbers language-none"><code class="language-none">npm-windows-upgrade<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> Hexo Github </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Hello World</title>
+      <link href="/2022/07/27/hello-world/"/>
+      <url>/2022/07/27/hello-world/</url>
+      
+        <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo new <span class="token string">"My New Post"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>More info: <a href="https://hexo.io/docs/writing.html">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo server<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>More info: <a href="https://hexo.io/docs/server.html">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo generate<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>More info: <a href="https://hexo.io/docs/generating.html">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo deploy<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>More info: <a href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+  
+  
+</search>
