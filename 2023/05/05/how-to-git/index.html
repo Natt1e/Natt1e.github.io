@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="How to write my article and post it, Natt1e">
+    <meta name="keywords" content="How to git, Natt1e">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>How to write my article and post it | Natt1e</title>
+    <title>How to git | Natt1e</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -310,12 +310,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/6.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/19.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">How to write my article and post it</h1>
+                    <h1 class="description center-align post-title">How to git</h1>
                 </div>
             </div>
         </div>
@@ -429,9 +429,13 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/git/">
+                                <span class="chip bg-color">git</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
@@ -443,7 +447,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-07-27
+                    2023-05-05
                 </div>
                 
 
@@ -467,17 +471,37 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="新建一篇文章"><a href="#新建一篇文章" class="headerlink" title="新建一篇文章"></a>新建一篇文章</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo new post <span class="token string">"title"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+                <h1 id="记录一下在使用git时遇到的异常，以便后续查阅"><a href="#记录一下在使用git时遇到的异常，以便后续查阅" class="headerlink" title="记录一下在使用git时遇到的异常，以便后续查阅"></a>记录一下在使用git时遇到的异常，以便后续查阅</h1><h3 id="常用指令"><a href="#常用指令" class="headerlink" title="常用指令"></a>常用指令</h3><h5 id="关联远程仓库"><a href="#关联远程仓库" class="headerlink" title="关联远程仓库"></a>关联远程仓库</h5><pre class="line-numbers language-none"><code class="language-none">git init
+git remote add origin git@github.com:Natt1e&#x2F;learnGit.git<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<p>执行后在根目录<code>\source\_posts</code>下即可发现多了一个.md文章。</p>
-<h3 id="生成静态网页"><a href="#生成静态网页" class="headerlink" title="生成静态网页"></a>生成静态网页</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo g<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h5 id="删除关联的远程仓库"><a href="#删除关联的远程仓库" class="headerlink" title="删除关联的远程仓库"></a>删除关联的远程仓库</h5><pre class="line-numbers language-none"><code class="language-none">git remote rm origin<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h3 id="本地预览效果"><a href="#本地预览效果" class="headerlink" title="本地预览效果"></a>本地预览效果</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo s<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h5 id="删除本地分支"><a href="#删除本地分支" class="headerlink" title="删除本地分支"></a>删除本地分支</h5><pre class="line-numbers language-none"><code class="language-none">git branch -d &lt;branch-name&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h3 id="上传至github"><a href="#上传至github" class="headerlink" title="上传至github"></a>上传至github</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ hexo d<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>如果该分支有未合并的更改，此指令会报错，若想强制删除分支，使用：</p>
+<pre class="line-numbers language-none"><code class="language-none">git branch -D &lt;branch-name&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p>上传后更新会有延迟，耐心等待即可~</p>
+<h5 id="删除远程分支"><a href="#删除远程分支" class="headerlink" title="删除远程分支"></a>删除远程分支</h5><pre class="line-numbers language-none"><code class="language-none">git push origin --delete &lt;branch-name&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h5 id="切换分支"><a href="#切换分支" class="headerlink" title="切换分支"></a>切换分支</h5><pre class="line-numbers language-none"><code class="language-none">git checkout &lt;branch-name&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h5 id="创建并切换到新分支-b"><a href="#创建并切换到新分支-b" class="headerlink" title="创建并切换到新分支 -b"></a>创建并切换到新分支 -b</h5><pre class="line-numbers language-none"><code class="language-none">git checkout -b &lt;branch-name&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+
+<h3 id="报错一"><a href="#报错一" class="headerlink" title="报错一"></a>报错一</h3><pre class="line-numbers language-none"><code class="language-none">fatal:refusing to merge unrelated histories<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>我在远端创建了一个新的空仓库，想把本地的仓库push上去。在执行到<code>git push orgin master</code>时，报错：</p>
+<pre class="line-numbers language-none"><code class="language-none">! [rejected]        master -&gt; master (non-fast-forward)
+error: failed to push some refs to &#39;github.com:Natt1e&#x2F;xxxx.git&#39;
+hint: Updates were rejected because the tip of your current branch is behind
+hint: its remote counterpart. Integrate the remote changes (e.g.
+hint: &#39;git pull ...&#39;) before pushing again.
+hint: See the &#39;Note about fast-forwards&#39; in &#39;git push --help&#39; for details.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>git提示我要<code>git pull</code>一下，我就乖乖照做了，但在使用<code>git pull origin master</code>时遇到了此报错，原因是两个仓库不同而导致的。</p>
+<h5 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h5><pre class="line-numbers language-none"><code class="language-none">git pull origin master --allow-unrelated-histories<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 
                 
             </div>
@@ -504,7 +528,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://natt1e.github.io/2022/07/27/hello-world/">https://natt1e.github.io/2022/07/27/hello-world/</a>
+                    <a href="https://natt1e.github.io/2023/05/05/how-to-git/">https://natt1e.github.io/2023/05/05/how-to-git/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -541,7 +565,11 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">无标签</span>
+                            
+                                <a href="/tags/git/">
+                                    <span class="chip bg-color">git</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -709,17 +737,18 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2022/07/27/first/">
+                <a href="/2023/05/05/how-to-git/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="How to use Hexo and github to create your blog">
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="How to git">
                         
-                        <span class="card-title">How to use Hexo and github to create your blog</span>
+                        <span class="card-title">How to git</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -729,9 +758,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-07-27
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-05-05
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -740,11 +769,12 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Hexo-Github/">
-                        <span class="chip bg-color">Hexo Github</span>
+                    <a href="/tags/git/">
+                        <span class="chip bg-color">git</span>
                     </a>
                     
                 </div>
@@ -755,16 +785,16 @@
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/07/27/hello-world/">
+                <a href="/2022/07/27/first/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="How to write my article and post it">
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="How to use Hexo and github to create your blog">
                         
-                        <span class="card-title">How to write my article and post it</span>
+                        <span class="card-title">How to use Hexo and github to create your blog</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -785,7 +815,14 @@
                         </span>
                     </div>
                 </div>
-
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Hexo-Github/">
+                        <span class="chip bg-color">Hexo Github</span>
+                    </a>
+                    
+                </div>
                 
             </div>
         </div>
