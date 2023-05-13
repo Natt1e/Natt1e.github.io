@@ -491,7 +491,7 @@
 <p>运行成功后，应该会持续间隔地弹出窗口，提示病毒未被清除。</p>
 <p><img src="/2023/05/13/virtualvirus/going.png"></p>
 <p>实际上，病毒运行后，会把自己备份，复制到<code>C:\WINDOWS\system32\explorer.exe</code> 和 <code>C:\WINDOWS\taskmgr.exe</code> 。<code>explorer.exe</code>是Windows操作系统的资源管理器，而<code>taskmgr.exe</code>是Windows操作系统的任务管理器，这两个进程的名称与系统进程相同，起到了混淆的作用。这两个进程还会互相监控，一旦一个被杀死，另一个进程会再次启动它。此外，病毒还会修改注册表，使<code>C:\WINDOWS\system32\explorer.exe</code> 和 <code>C:\WINDOWS\taskmgr.exe</code> 随系统自动启动。</p>
-<h3 id="病毒清除"><a href="#病毒清除" class="headerlink" title="病毒清除"></a>病毒清除</h3><h4 id="结束进程"><a href="#结束进程" class="headerlink" title="结束进程"></a>结束进程</h4><p>结束taskmgr.exe和explorer.exe。由于这两个进程会互相监控，不能单独结束其中的一个。用Windows资源管理器中的结束进程数的方法，可以一起结束。但由于不知道进程的路径，可以误结束系统进程。</p>
+<h3 id="病毒清除"><a href="#病毒清除" class="headerlink" title="病毒清除"></a>病毒清除</h3><h4 id="结束进程"><a href="#结束进程" class="headerlink" title="结束进程"></a>结束进程</h4><p>结束taskmgr.exe和explorer.exe。由于这两个进程会互相监控，不能单独结束其中的一个。用Windows资源管理器中的结束进程数的方法，可以一起结束。但由于不知道进程的路径，可能误结束系统进程。</p>
 <p><img src="/2023/05/13/virtualvirus/end.png"></p>
 <h4 id="修改注册表"><a href="#修改注册表" class="headerlink" title="修改注册表"></a>修改注册表</h4><p><code>win+R</code>输入regedit启动注册表编辑器，在<code>HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Run</code>下删除<code>explorer</code>和<code>taskmgr</code>两个键，防止病毒自动启动</p>
 <p><img src="/2023/05/13/virtualvirus/regedit.png"></p>
