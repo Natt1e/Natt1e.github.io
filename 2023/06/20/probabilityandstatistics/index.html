@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="snort+barnyard2+base_Ubuntu18.04, Natt1e">
+    <meta name="keywords" content="Probability_Statistics, Natt1e">
     <meta name="description" content="写给自己看。">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>snort+barnyard2+base_Ubuntu18.04 | Natt1e</title>
+    <title>Probability_Statistics | Natt1e</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -310,12 +310,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('https://s1.ax1x.com/2023/05/11/p9rxSyQ.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/19.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">snort+barnyard2+base_Ubuntu18.04</h1>
+                    <h1 class="description center-align post-title">Probability_Statistics</h1>
                 </div>
             </div>
         </div>
@@ -431,31 +431,14 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Ubuntu/">
-                                <span class="chip bg-color">Ubuntu</span>
-                            </a>
-                        
-                            <a href="/tags/snort/">
-                                <span class="chip bg-color">snort</span>
-                            </a>
-                        
-                            <a href="/tags/mysql/">
-                                <span class="chip bg-color">mysql</span>
+                            <a href="/tags/math/">
+                                <span class="chip bg-color">math</span>
                             </a>
                         
                     </div>
                     
                 </div>
                 <div class="col s5 right-align">
-                    
-                    <div class="post-cate">
-                        <i class="fas fa-bookmark fa-fw icon-category"></i>
-                        
-                            <a href="/categories/%E7%8E%AF%E5%A2%83%E9%85%8D%E7%BD%AE/" class="post-category">
-                                环境配置
-                            </a>
-                        
-                    </div>
                     
                 </div>
             </div>
@@ -464,7 +447,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2023-05-09
+                    2023-06-20
                 </div>
                 
 
@@ -473,7 +456,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.9k
+                    927
                 </div>
                 
 
@@ -498,418 +481,57 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="基于Ubuntu18-04配置snort-barnyard2-base入侵检测系统"><a href="#基于Ubuntu18-04配置snort-barnyard2-base入侵检测系统" class="headerlink" title="基于Ubuntu18.04配置snort+barnyard2+base入侵检测系统"></a>基于Ubuntu18.04配置snort+barnyard2+base入侵检测系统</h1><p>我们一共需要: Apache , PHP,  MySQL, Snort, Barnyard2, BASE.</p>
-<p>Ubuntu版本为18.04 LTS.</p>
-<h2 id="安装Apache2-Web服务器"><a href="#安装Apache2-Web服务器" class="headerlink" title="安装Apache2 Web服务器"></a>安装Apache2 Web服务器</h2><pre class="line-numbers language-none"><code class="language-none">sudo apt-get install apache2<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<h2 id="安装PHP"><a href="#安装PHP" class="headerlink" title="安装PHP"></a>安装PHP</h2><p>因为环境比较古早，需要PHP5及以下的版本。但Ubuntu18.04自带了PHP7，所以需要新装一个PHP5，并且切换至PHP5</p>
-<p>安装PHP5：</p>
-<pre class="line-numbers language-none"><code class="language-none">sudo add-apt-repository ppa:ondrej&#x2F;php
-sudo apt-get update
-sudo apt-get install php5.6<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-
-<p>将版本切换至5：</p>
-<ol>
-<li><strong>先禁用PHP 7，可以用<code>php -v</code>先查看当前的php版本。</strong></li>
-</ol>
-<pre class="line-numbers language-none"><code class="language-none">sudo a2dismod php7.4<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>输出：<code>Module php7.4 already disabled</code></p>
-<p>如果提示没有mod就先安装一个：<code>sudo apt-get install libapache2-mod-php7.4</code></p>
-<ol start="2">
-<li><strong>启用PHP5</strong></li>
-</ol>
-<pre class="line-numbers language-none"><code class="language-none">sudo a2enmod php5.6<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>看到最后一行输出<code>Module php5.6 already enabled</code>即为成功，除此之外应该还会有一些其他的信息。</p>
-<ol start="3">
-<li><strong>重启apache</strong></li>
-</ol>
-<pre class="line-numbers language-none"><code class="language-none">sudo service apache2 restart<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<ol start="4">
-<li><strong>查看当前PHP版本</strong></li>
-</ol>
-<pre class="line-numbers language-none"><code class="language-none">php -v<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>此时应该成功切换至PHP5，如果未切换成功，则等待几分钟，再进行查看。</p>
-<h2 id="安装mysql"><a href="#安装mysql" class="headerlink" title="安装mysql"></a>安装mysql</h2><p>直接进行安装即可</p>
-<pre class="line-numbers language-none"><code class="language-none">sudo apt-get install mysql-server
-sudo apt-get install mysql-client<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
-<p>安装完以上之后，还需安装一些其他依赖项</p>
-<p>apache2 php5模块</p>
-<pre class="line-numbers language-none"><code class="language-none">sudo apt-get install libapache2-mod-php5.6<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>php5 mysql模块</p>
-<pre class="line-numbers language-none"><code class="language-none">sudo apt-get install php5.6-mysql<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<h2 id="安装snort"><a href="#安装snort" class="headerlink" title="安装snort"></a>安装snort</h2><p>snort是一个入侵检测系统，在1998年用C语言开发，已经是非常古老的产物了。</p>
-<ol>
-<li><strong>先查看一下本机的接口</strong>：（之后会用到）</li>
-</ol>
-<pre class="line-numbers language-none"><code class="language-none">ifconfig<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>一般来讲都会有ens33和lo两个接口。如果提示没有net-tools就安装一个。</p>
-<p><img src="/2023/05/09/ubuntu-snort-barnyard2-base/ifconfig.png"></p>
-<ol start="2">
-<li><strong>安装snort</strong>，直接安装即可</li>
-</ol>
-<pre class="line-numbers language-none"><code class="language-none">sudo apt-get install snort<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>在安装过程中，可能会弹出窗口让选择Snort监听的接口，默认为eth0，但可能本机根本就没有eth0这个接口。此时填<code>ifconfig</code>查询出来的接口即可，如ens33.</p>
-<ol start="3">
-<li><strong>查询Snort版本</strong>，观察是否安装成功</li>
-</ol>
-<pre class="line-numbers language-none"><code class="language-none">snort -V<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p><img src="/2023/05/09/ubuntu-snort-barnyard2-base/snort-v.png"></p>
-<ol start="4">
-<li><strong>编辑配置文件</strong></li>
-</ol>
-<p>snort的配置文件在<code>/etc/snort/snort.conf</code></p>
-<pre class="line-numbers language-none"><code class="language-none">sudo vim &#x2F;etc&#x2F;snort&#x2F;snort.conf<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>修改内容如下(若内容一样则无需修改)：</p>
-<p>（vim跳转至xx行，可直接:xxx回车）</p>
-<p>115行左右：</p>
-<pre class="line-numbers language-none"><code class="language-none">var RULE_PATH &#x2F;etc&#x2F;snort&#x2F;rules
-var SO_RULE_PATH &#x2F;etc&#x2F;snort&#x2F;so_rules
-var PREPROC_RULE_PATH &#x2F;etc&#x2F;snort&#x2F;preproc_rules<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-
-<p>目的为指定规则文件存放的路径，一般不用修改。</p>
-<p>536行左右：</p>
-<pre class="line-numbers language-none"><code class="language-none">output unified2: filename snort.log, limit 128, mpls_event_types, vlan_event_types<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>目的为配置日志输出选项。</p>
-<p><code>output unified2</code>: 设置日志输出格式为“unified2”</p>
-<p><code>filename snort.log</code>: 将日志写入名为“snort.log”的文件</p>
-<p><code>limit 128</code>: 设置日志文件的最大大小为128MB</p>
-<p><code>mpls_event_types</code>: 启用对MPLS（多协议标签交换）事件的记录</p>
-<p><code>vlan_event_types</code>: 启用对VLAN（虚拟局域网）事件的记录</p>
-<p>**若显示该文件为只读文件，可强制修改，命令为<code>:w !sudo tee %</code>**，该指令以后也会用到。</p>
-<h2 id="测试snort"><a href="#测试snort" class="headerlink" title="测试snort"></a>测试snort</h2><p>接下来，我们来测试一下snort，体会一下它的功能：</p>
-<ol>
-<li><strong>启动snort</strong></li>
-</ol>
-<pre class="line-numbers language-none"><code class="language-none">sudo service snort restart<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<ol start="2">
-<li><strong>修改规则</strong></li>
-</ol>
-<pre class="line-numbers language-none"><code class="language-none">sudo vim &#x2F;etc&#x2F;snort&#x2F;rules&#x2F;local.rules &#x2F;&#x2F;这个是不是似曾相识？这是存放自定义规则的文件<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>向其中加入：</p>
-<pre class="line-numbers language-none"><code class="language-none">alert icmp any any -&gt; $HOME_NET any (msg:&quot;ICMP Test NOW!!!&quot;; classtype:not-suspicious; sid:1000001; rev:1;)
-alert tcp any any -&gt; $HOME_NET 80 (msg:&quot;HTTP Test NOW!!!&quot;; classtype:not-suspicious; sid:1000002;  rev:1;)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
-<p>这两条规则的含义是无论什么发往本机的ICMP和HTTP报文都会发出警告。</p>
-<ol start="3">
-<li><strong>加入规则</strong></li>
-</ol>
-<pre class="line-numbers language-none"><code class="language-none">sudo vim &#x2F;etc&#x2F;snort&#x2F;snort.conf<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>在大概573行：将除了local.rules之外的规则文件都去掉，即那些include，目的是为了方便测试。</p>
-<p>最终是这样：</p>
-<pre class="line-numbers language-none"><code class="language-none"># site specific rules
-include $RULE_PATH&#x2F;local.rules<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
-<ol start="4">
-<li><strong>启动测试</strong></li>
-</ol>
-<pre class="line-numbers language-none"><code class="language-none">sudo snort -T -c &#x2F;etc&#x2F;snort&#x2F;snort.conf<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>如果看到输出是这样的：</p>
-<pre class="line-numbers language-none"><code class="language-none">...
-...
-Snort successfully validated the configuration!
-Snort exiting<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p><img src="/2023/05/09/ubuntu-snort-barnyard2-base/snort-test-2.png"></p>
-<p>并且还能在一堆信息里找到：</p>
-<pre class="line-numbers language-none"><code class="language-none">+++++++++++++++++++++++++++++++++++++++++++++++++++
-Initializing rule chains...
-1 Snort rules read
-    1 detection rules
-    0 decoder rules
-    0 preprocessor rules
-1 Option Chains linked into 1 Chain Headers
-0 Dynamic rules
-+++++++++++++++++++++++++++++++++++++++++++++++++++
- 
-+-------------------[Rule Port Counts]---------------------------------------
-|             tcp     udp    icmp      ip
-|     src       0       0       0       0
-|     dst       0       0       0       0
-|     any       0       0       1       0
-|      nc       0       0       1       0
-|     s+d       0       0       0       0
-+----------------------------------------------------------------------------<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p><img src="/2023/05/09/ubuntu-snort-barnyard2-base/snort-test-1.png"></p>
-<p>说明成功辣！</p>
-<pre class="line-numbers language-none"><code class="language-none">sudo snort -A console -q -u snort -g snort -c &#x2F;etc&#x2F;snort&#x2F;snort.conf -i ens33<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>这里需要修改一下接口，我的是ens33</p>
-<p>之后需要ping一下ubuntu，可以本机另开一个terminal（如果这样测试ens33要改为lo，因为lo是本地环回接口）：</p>
-<pre class="line-numbers language-none"><code class="language-none">ping localhost<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>如果ubuntu是虚拟机，还可以用主机ping，虚拟机的ip用<code>ifconfig</code>查。</p>
-<p>如果看到这样的输出：</p>
-<p><img src="/2023/05/09/ubuntu-snort-barnyard2-base/snort-test-3.png"></p>
-<p>那说明成功了，真是太好了</p>
-<h2 id="配置Mysql"><a href="#配置Mysql" class="headerlink" title="配置Mysql"></a>配置Mysql</h2><p>我们配置Mysql的目的是创建一个snort用户，和两个数据库snort和archive，以便信息可以存储到数据库中。</p>
-<ol>
-<li><strong>先尝试连接数据库</strong>：</li>
-</ol>
-<pre class="line-numbers language-none"><code class="language-none">mysql -u root -p<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p><code>-u root</code> ： 用root身份</p>
-<p><code>-p</code> ：需要密码</p>
-<p><strong>提示输入密码，直接按回车，如果报错，则进行下面的环节，如果不报错可跳过2-3步。</strong></p>
-<ol start="2">
-<li><strong>设置允许无密码登录，重启mysql</strong></li>
-</ol>
-<p>修改文件：</p>
-<pre class="line-numbers language-none"><code class="language-none">sudo vim &#x2F;etc&#x2F;mysql&#x2F;mysql.conf.d&#x2F;mysqld.cnf<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p><strong>在[mysqld]中添加skip-grant-tables</strong>,<strong>直接添加即可</strong></p>
-<p>重启mysql：</p>
-<pre class="line-numbers language-none"><code class="language-none">service mysql restart<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>再连接mysql：</p>
-<pre class="line-numbers language-none"><code class="language-none">mysql -u root -p<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>此时直接按回车便可登录。</p>
-<p><img src="/2023/05/09/ubuntu-snort-barnyard2-base/mysql.png"></p>
-<ol start="3">
-<li><strong>设置密码，取消无需密码登录</strong></li>
-</ol>
-<p><em>别忘了分号</em></p>
-<pre class="line-numbers language-none"><code class="language-none">use mysql;
-flush privileges;
-UPDATE user SET authentication_string&#x3D;&quot;&quot; WHERE user&#x3D;&quot;root&quot;;&#x2F;&#x2F;先把root密码置为空
-flush privileges;
-alter user &#39;root&#39;@&#39;localhost&#39; identified with mysql_native_password by &#39;你的密码&#39;; &#x2F;&#x2F; 重置密码
-exit; &#x2F;&#x2F; 退出<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p>再去掉之前加的skip-grant-tables</p>
-<pre class="line-numbers language-none"><code class="language-none">sudo vim &#x2F;etc&#x2F;mysql&#x2F;mysql.conf.d&#x2F;mysqld.cnf<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>重启mysql</p>
-<pre class="line-numbers language-none"><code class="language-none">service mysql restart<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<ol start="4">
-<li><strong>配置用户以及数据库</strong></li>
-</ol>
-<pre class="line-numbers language-none"><code class="language-none">mysql -u root -p<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>输入重置后的密码</p>
-<pre class="line-numbers language-none"><code class="language-none">create database snort;
-create database archive;&#x2F;&#x2F; 创建snort 和 archive数据库<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
-<pre class="line-numbers language-none"><code class="language-none">create user snort@localhost; &#x2F;&#x2F; 创建snort用户
-grant usage on snort.* to snort@localhost; &#x2F;&#x2F; 授予权限，只能从本地连接服务器
-grant usage on archive.* to snort@localhost;&#x2F;&#x2F; 同上<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-
-<pre class="line-numbers language-none"><code class="language-none">set password for snort@localhost&#x3D;PASSWORD(&#39;密码&#39;); &#x2F;&#x2F; 设置密码，这个密码要记住，以后要用<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<pre class="line-numbers language-none"><code class="language-none">grant all privileges on snort.* to snort@localhost; &#x2F;&#x2F; 授予对数据库的所有操作
-grant all privileges on archive.* to snort@localhost;&#x2F;&#x2F; 如插入、删除等等..
-flush privileges;
-exit<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h2 id="安装barnyard2"><a href="#安装barnyard2" class="headerlink" title="安装barnyard2"></a>安装barnyard2</h2><ol>
-<li><strong>首先安装一些依赖项</strong></li>
-</ol>
-<pre class="line-numbers language-none"><code class="language-none">sudo apt-get install build-essential libpcap-dev libmysqlclient-dev libtool libssl-dev libnetfilter queue-dev libpcre3-dev autoconf automake bison flex libdumbnet-dev<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>执行失败也没关系，之后缺什么按什么即可</p>
-<ol start="2">
-<li><strong>安装barnyard2</strong></li>
-</ol>
-<pre class="line-numbers language-none"><code class="language-none">cd ~
-wget https:&#x2F;&#x2F;github.com&#x2F;firnsy&#x2F;barnyard2&#x2F;archive&#x2F;v2- 1.13.tar.gz -O barnyard2-2-1.13.tar.gz
-tar zxvf barnyard2-2-1.13.tar.gz<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-
-<pre class="line-numbers language-none"><code class="language-none">cd barnyard2-2-1.13
-autoreconf -fvi -I .&#x2F;m4
-.&#x2F;configure --with-mysql --with-mysql libraries&#x3D;&#x2F;usr&#x2F;lib&#x2F;x86_64-linux-gnu --with-mysql-includes&#x3D;&#x2F;usr&#x2F;include&#x2F;
-make
-sudo make install
-sudo cp &#x2F;usr&#x2F;local&#x2F;etc&#x2F;barnyard2.conf &#x2F;etc&#x2F;snort
-sudo mkdir &#x2F;var&#x2F;log&#x2F;barnyard2
-touch &#x2F;var&#x2F;log&#x2F;snort&#x2F;barnyard2.waldo
-sudo chown snort.snort &#x2F;var&#x2F;log&#x2F;barnyard2
-sudo cp schemas&#x2F;create_mysql &#x2F;usr&#x2F;src   &#x2F;&#x2F;这个之后要用，在barnyard2-2-1.13目录下，我一开始没找到。。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<ol start="3">
-<li><strong>编辑配置</strong></li>
-</ol>
-<p>44行附近，修改为：</p>
-<pre class="line-numbers language-none"><code class="language-none">config logdir:&#x2F;var&#x2F;log&#x2F;barnyard2 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>56行附近，修改为：</p>
-<pre class="line-numbers language-none"><code class="language-none">config hostname: localhost
-config interface: ens33 &#x2F;&#x2F;是不是感觉似曾相识<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
-<p>131行附近，修改为：</p>
-<pre class="line-numbers language-none"><code class="language-none">config waldo_file:&#x2F;var&#x2F;log&#x2F;snort&#x2F;barnyard2.waldo<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>227行附近，修改为：</p>
-<pre class="line-numbers language-none"><code class="language-none">output alert_fast<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>348行附近，去掉注释，修改为：</p>
-<pre class="line-numbers language-none"><code class="language-none">output database: log, mysql, user&#x3D;snort password&#x3D;123456 dbname&#x3D;snort host&#x3D;localhost  <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p><strong>注意：这里的user和password填刚刚在数据库创建的用户及其密码</strong></p>
-<p>还记得之前说过<code>sudo cp schemas/create_mysql /usr/src</code>之后要用吗，就是现在要用一下，这是一个建表的脚本。</p>
-<pre class="line-numbers language-none"><code class="language-none">mysql -u root -p<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>输入密码登录数据库</p>
-<pre class="line-numbers language-none"><code class="language-none">use snort;
-source &#x2F;usr&#x2F;src&#x2F;create_mysql;
-show tables;                                                 
-exit<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p>结果应该是这样的：</p>
-<p><img src="/2023/05/09/ubuntu-snort-barnyard2-base/create.png"></p>
-<h2 id="测试barnyard2"><a href="#测试barnyard2" class="headerlink" title="测试barnyard2"></a>测试barnyard2</h2><p>接下来我们来测试一下刚刚安装的barnyard2</p>
-<ol>
-<li><strong>启动snort</strong></li>
-</ol>
-<pre class="line-numbers language-none"><code class="language-none">sudo snort -q -u snort -g snort -c &#x2F;etc&#x2F;snort&#x2F;snort.conf -i ens33 -D<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>输出应为：</p>
-<p><img src="/2023/05/09/ubuntu-snort-barnyard2-base/b-test-1.png"></p>
-<ol start="2">
-<li><strong>启动Barnyard2</strong></li>
-</ol>
-<pre class="line-numbers language-none"><code class="language-none">sudo barnyard2 -c &#x2F;etc&#x2F;snort&#x2F;barnyard2.conf -d &#x2F;var&#x2F;log&#x2F;snort&#x2F; -f snort.log -w &#x2F;var&#x2F;log&#x2F;snort&#x2F;barnyard2.waldo -g snort -u snort -T<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>我在这里遇到了数据库连接失败的情况，我检查了一下用户名和密码无误后，再次尝试还是失败，于是我选择重启电脑，问题果然被解决了。。。</p>
-<p>然后我又遇到了缺少sid-msg.map文件的错误，修复方法：</p>
-<pre class="line-numbers language-none"><code class="language-none">cd &#x2F;usr&#x2F;share&#x2F;oinkmaster
-sudo bash -c &quot;sudo .&#x2F;create-sidmap.pl &#x2F;etc&#x2F;snort&#x2F;rules &gt; &#x2F;etc&#x2F;snort&#x2F;sid-msg.map&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
-
-<p>最终的输出结果应该是这样的：</p>
-<p><img src="/2023/05/09/ubuntu-snort-barnyard2-base/b-test-2.png"></p>
-<p><code>barnyard2</code>: 启动Barnyard2程序</p>
-<p><code>-c /etc/snort/barnyard2.conf</code>: 指定Barnyard2的配置文件路径为“&#x2F;etc&#x2F;snort&#x2F;barnyard2.conf“</p>
-<p><code>-d /var/log/snort/</code>: 指定Snort日志文件的目录路径为“&#x2F;var&#x2F;log&#x2F;snort&#x2F;”</p>
-<p><code>-f snort.log</code>: 指定要处理的日志文件名称为“snort.log”</p>
-<p><code>-w /var/log/snort/barnyard2.waldo</code>: 指定Barnyard2的Waldo文件路径为“&#x2F;var&#x2F;log&#x2F;snort&#x2F;barnyard2.waldo”</p>
-<p><code>-g snort</code>: 指定Barnyard2运行的用户组为“snort”</p>
-<p><code>-u snort</code>: 指定Barnyard2运行的用户为“snort”</p>
-<p><code>-T</code>: 检查Barnyard2配置文件的正确性，并输出任何错误或警告信息</p>
-<ol start="3">
-<li><strong>继续测试</strong></li>
-</ol>
-<pre class="line-numbers language-none"><code class="language-none">sudo barnyard2 -c &#x2F;etc&#x2F;snort&#x2F;barnyard2.conf -d &#x2F;var&#x2F;log&#x2F;snort -f snort.log –w &#x2F;var&#x2F;log&#x2F;snort&#x2F;barnyard2.waldo -g snort -u snort<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>继续ping测试，方法参考之前的。</p>
-<p>然后检查数据库是否存入数据</p>
-<pre class="line-numbers language-none"><code class="language-none">mysql -u snort -p -D snort -e &quot;select count(*) from event&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p><img src="/2023/05/09/ubuntu-snort-barnyard2-base/b-test-3.png"></p>
-<p>count不是0就行~</p>
-<p>恭喜哦</p>
-<h2 id="安装BASE"><a href="#安装BASE" class="headerlink" title="安装BASE"></a>安装BASE</h2><ol>
-<li><strong>各种安装</strong></li>
-</ol>
-<p><strong>安装相关插件</strong></p>
-<pre class="line-numbers language-none"><code class="language-none">sudo apt-get install libphp-adodb<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p><strong>修改php.ini:</strong></p>
-<pre class="line-numbers language-none"><code class="language-none">sudo vi &#x2F;etc&#x2F;php&#x2F;5.6&#x2F;apache2&#x2F;php.ini <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>在449行附件，改为：</p>
-<pre class="line-numbers language-none"><code class="language-none">error_reporting &#x3D; E_ALL &amp; ~E_NOTICE<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>这个要改对哦，我一开始没改对，找了好久。。。</p>
-<p><strong>修改apache2.conf:</strong></p>
-<pre class="line-numbers language-none"><code class="language-none">sudo vim &#x2F;etc&#x2F;apache2&#x2F;apache2.conf<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p>加入以下内容：（178行左右）</p>
-<pre class="line-numbers language-none"><code class="language-none">&lt;Directory &#x2F;var&#x2F;www&#x2F;html&#x2F;base&gt;
-    AllowOverride All
-    Require all granted
-&lt;&#x2F;Directory&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p><strong>重启Apache2：</strong></p>
-<pre class="line-numbers language-none"><code class="language-none">sudo service apache2 restart<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-
-<p><strong>安装BASE依赖：</strong></p>
-<pre class="line-numbers language-none"><code class="language-none">sudo apt-get install php-pear
-
-sudo apt-get install libwww-perl                                                       
-
-sudo apt-get install php5.6-gd
-
-sudo apt-get install php5.6-xml
-
-sudo pear config-set preferred_state alpha
-
-sudo pear channel-update pear.php.net
-
-sudo pear install --alldeps Image_Color Image_Canvas Image_Graph<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p>最后一个安装可能会有些久，请耐心等待~~</p>
-<ol start="2">
-<li><strong>安装BASE</strong></li>
-</ol>
-<pre class="line-numbers language-none"><code class="language-none">sudo wget http:&#x2F;&#x2F;sourceforge.net&#x2F;projects&#x2F;secureideas&#x2F;files&#x2F;BASE&#x2F;base-1.4.5&#x2F;base-1.4.5.tar.gz
-
-sudo tar -zxf base-1.4.5.tar.gz
-
-sudo cp -r base-1.4.5 &#x2F;var&#x2F;www&#x2F;html&#x2F;base
-
-sudo chown -R www-data:www-data &#x2F;var&#x2F;www&#x2F;html&#x2F;base
-
-sudo service apache2 restart<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<ol start="3">
-<li><strong>打开BASE</strong></li>
-</ol>
-<p>在浏览器输入<code>localhost/base</code>，应该是这样的：</p>
-<p><img src="/2023/05/09/ubuntu-snort-barnyard2-base/web1.png"></p>
-<p>点continue~~进入下一步 </p>
-<ol start="4">
-<li><strong>配置BASE</strong></li>
-</ol>
-<p>照着写：</p>
-<p><img src="/2023/05/09/ubuntu-snort-barnyard2-base/web2.png"></p>
-<p>这里需要写数据库的用户名和密码：</p>
-<p><img src="/2023/05/09/ubuntu-snort-barnyard2-base/web3.png"></p>
-<p>设置管理员用户名和密码，Full name可以不写：</p>
-<p><img src="/2023/05/09/ubuntu-snort-barnyard2-base/web4.png"></p>
-<p>然后进入第四步，直接点进入到第五步，应该是这样：</p>
-<p><img src="/2023/05/09/ubuntu-snort-barnyard2-base/web6.png"></p>
-<p>最终：</p>
-<p><img src="/2023/05/09/ubuntu-snort-barnyard2-base/web5.png"></p>
-<p><strong>成功辣！！！！</strong></p>
-<p>我前前后后其实配了很久，踩了很多的坑，遇到了各种各样的问题，不过一切问题都是有原因的，总有办法可以解决问题。</p>
-<h2 id="实际使用"><a href="#实际使用" class="headerlink" title="实际使用"></a>实际使用</h2><p>配完环境之后，需要重新启动一下计算机。</p>
-<p><strong>启动服务：</strong></p>
-<pre class="line-numbers language-none"><code class="language-none">sudo &#x2F;etc&#x2F;init.d&#x2F;mysql start
-
-sudo &#x2F;etc&#x2F;init.d&#x2F;apache2 start
-
-sudo &#x2F;etc&#x2F;init.d&#x2F;snort start
-
-sudo snort -u snort -g snort -c &#x2F;etc&#x2F;snort&#x2F;snort.conf -i ens33 -D
-
-sudo barnyard2 -c &#x2F;etc&#x2F;snort&#x2F;barnyard2.conf -d &#x2F;var&#x2F;log&#x2F;snort&#x2F; -f snort.log -w &#x2F;var&#x2F;log&#x2F;snort&#x2F;barnyard2.waldo -g snort -u snort<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p><strong>ping：</strong></p>
-<p>方法参考前文</p>
-<p><strong>查看警告：</strong></p>
-<p>在浏览器输入<code>localhost/base</code> ，即可查看结果：</p>
-<p><img src="/2023/05/09/ubuntu-snort-barnyard2-base/result.png"></p>
-<p>可以看到有新增的警告，还可以查看<code>Today‘s alert</code>了解详细信息：</p>
-<p><img src="/2023/05/09/ubuntu-snort-barnyard2-base/today.png"></p>
-<p><strong>谢谢！</strong></p>
-
+                <h3 id="体会"><a href="#体会" class="headerlink" title="体会"></a>体会</h3><p>第一次考试的时候感觉很顺利，自认为每个题都会做且都做对了，提前交卷走人。但结果不甚理想，一直以来我都认为本人知识掌握得十分熟练，乃粗心大意所致。但当我重新学习过后，我才发现其实有很多疏漏，很多知识我都不甚理解，原来并不是粗心大意，而就是知识理解得不透彻、不到位。在重新学习的过程中，我真的学到了很多。</p>
+<p>其实在开始做题之前，我仍自我感觉良好，对过答案之后才察觉漏洞百出。仅仅五套题，扣的分数已经有大几十分，都是自负所致。做事还是脚踏实地落到实处一点为好。</p>
+<p>以下是对这五套题错题的简单回顾与总结：</p>
+<ul>
+<li>概率为0的事件不一定是不可能事件</li>
+</ul>
+<script type="math/tex; mode=display">
+dxdy = rdrd\theta</script><script type="math/tex; mode=display">
+P(\overline{A}B+A\overline{B})=P(\overline{A}B) + P(A\overline{B}) =P(A)-P(AB)+P(B)-P(AB)</script><ul>
+<li>我个蠢b根本没理解矩估计</li>
+<li>随机变量的函数分布忘记给导数加绝对值，算出来的概率密度函数是负的…</li>
+<li>给似然函数求导时对样本X求导了…</li>
+<li>正态分布的概率密度函数没背下来…</li>
+<li>算均值直接对f(x)积分了，积出来是1还感觉很优雅…</li>
+<li>XY线性相关的条件是 相关系数的绝对值=1</li>
+</ul>
+<h3 id="离散型随机变量"><a href="#离散型随机变量" class="headerlink" title="离散型随机变量"></a>离散型随机变量</h3><h5 id="两点分布"><a href="#两点分布" class="headerlink" title="两点分布"></a>两点分布</h5><p>例如，抛一次硬币，是正面朝上还是反面朝上</p>
+<script type="math/tex; mode=display">
+EX= p \\DX=p(1-p)</script><h5 id="几何分布"><a href="#几何分布" class="headerlink" title="几何分布"></a>几何分布</h5><p>实验k次才第一次成功</p>
+<script type="math/tex; mode=display">
+P\{X=k\} = p(1-p)^{k-1}</script><script type="math/tex; mode=display">
+EX=\frac{1}{p}  \\ DX=\frac{1-p}{p^2}</script><h5 id="泊松分布"><a href="#泊松分布" class="headerlink" title="泊松分布"></a>泊松分布</h5><script type="math/tex; mode=display">
+P\{X=k\}=e^{-\lambda}\frac{\lambda^k}{k!}</script><script type="math/tex; mode=display">
+EX=\lambda \\ DX=\lambda</script><h5 id="超几何分布"><a href="#超几何分布" class="headerlink" title="超几何分布"></a>超几何分布</h5><h5 id="二项分布"><a href="#二项分布" class="headerlink" title="二项分布"></a>二项分布</h5><script type="math/tex; mode=display">
+X \sim B(n,p)</script><script type="math/tex; mode=display">
+EX=np \\ DX=npq</script><h3 id="连续性随机变量"><a href="#连续性随机变量" class="headerlink" title="连续性随机变量"></a>连续性随机变量</h3><h5 id="均匀分布"><a href="#均匀分布" class="headerlink" title="均匀分布"></a>均匀分布</h5><script type="math/tex; mode=display">
+X \sim U[a,b]</script><h5 id="指数分布"><a href="#指数分布" class="headerlink" title="指数分布"></a>指数分布</h5><script type="math/tex; mode=display">
+x\geq 0   \\ f(x)=\lambda e^{-\lambda x}</script><script type="math/tex; mode=display">
+EX=\frac{1}{\lambda} \\ DX=\frac{1}{\lambda^2}</script><h3 id="正态分布"><a href="#正态分布" class="headerlink" title="正态分布"></a>正态分布</h3><h5 id="泊松-欧拉积分"><a href="#泊松-欧拉积分" class="headerlink" title="泊松-欧拉积分"></a>泊松-欧拉积分</h5><script type="math/tex; mode=display">
+\int_{-\infty}^{+\infty}e^{-x^2}dx = \sqrt{\pi}</script><script type="math/tex; mode=display">
+X \sim N(\mu, \sigma^2)  \\ f(x)=\frac{1}{\sigma\sqrt{2\pi}}e^{-\frac{(x-\mu)^2}{2\sigma^2}}</script><p>若X和Y服从正态分布，则Z=aX+bY+c服从正态分布。</p>
+<h3 id="二维随机变量"><a href="#二维随机变量" class="headerlink" title="二维随机变量"></a>二维随机变量</h3><h5 id="边缘分布函数"><a href="#边缘分布函数" class="headerlink" title="边缘分布函数"></a>边缘分布函数</h5><p><em>（X,Y）</em>的分布函数<em>F(x,y)</em></p>
+<script type="math/tex; mode=display">
+F_X(x)=F(x,+\infty) \\ F_Y(y)=F(+\infty,y)</script><h5 id="边缘概率密度"><a href="#边缘概率密度" class="headerlink" title="边缘概率密度"></a>边缘概率密度</h5><p><em>（X,Y）</em>的概率密度函数<em>f(x,y)</em></p>
+<script type="math/tex; mode=display">
+f_X(x)=\int_{-\infty}^{+\infty}f(x,y)dy \\ f_Y(y)=\int_{-\infty}^{+\infty}f(x,y)dx</script><h5 id="条件概率密度"><a href="#条件概率密度" class="headerlink" title="条件概率密度"></a>条件概率密度</h5><script type="math/tex; mode=display">
+f_{X|Y}(x|y)=\frac{f(x,y)}{f_Y(y)} \\ f_{Y|X}(y|x)=\frac{f(x,y)}{f_X(x)}</script><h5 id="相互独立的随机变量"><a href="#相互独立的随机变量" class="headerlink" title="相互独立的随机变量"></a>相互独立的随机变量</h5><p>X与Y相互独立的条件：</p>
+<script type="math/tex; mode=display">
+F(x,y) = F_X(x) \cdot F_Y(y) \\ P\{X=x,Y=y\}=P\{X=x\} \cdot P\{Y=y\} \\ f(x,y)=f_X(x) \cdot f_Y(y)  \space \space \space(几乎处处)</script><h3 id="随机变量的函数分布"><a href="#随机变量的函数分布" class="headerlink" title="随机变量的函数分布"></a>随机变量的函数分布</h3><p>X的概率密度为f(x),函数y=g(x)在区间(a,b)上严格单调，反函数x=h(y)有连续导数，则Y=g(X)的概率密度函数为：</p>
+<script type="math/tex; mode=display">
+f_Y(y)=f(h(y)) \cdot |h^`(y)|</script><h3 id="随机变量的数字特征"><a href="#随机变量的数字特征" class="headerlink" title="随机变量的数字特征"></a>随机变量的数字特征</h3><h5 id="期望"><a href="#期望" class="headerlink" title="期望"></a>期望</h5><p>无论X与Y是不是独立，都有：</p>
+<script type="math/tex; mode=display">
+E(X+Y)=EX+EY</script><h5 id="方差"><a href="#方差" class="headerlink" title="方差"></a>方差</h5><script type="math/tex; mode=display">
+DX=E(X-EX)^2=EX^2-(EX)^2</script><p>当X和Y相互独立时：</p>
+<script type="math/tex; mode=display">
+D(X+Y)=DX+DY</script><h5 id="协方差与相关系数"><a href="#协方差与相关系数" class="headerlink" title="协方差与相关系数"></a>协方差与相关系数</h5><script type="math/tex; mode=display">
+Cov(X,Y)=E[(X-EX)(Y-EY)]=EXY-EX \cdot EY</script><script type="math/tex; mode=display">
+D(X+Y)=DX+DY+2Cov(X,Y) \\
+D(X-Y)=DX+DY-2Cov(X,Y)</script><p>由XY独立，可以推出Cov(X,Y)=0,反之不然(正态分布除外)</p>
+<script type="math/tex; mode=display">
+\rho_{XY} = \frac{Cov(X,Y)}{\sqrt{DX} \cdot \sqrt{Y}} \\ |\rho|=1 \space等价于 \space P\{Y=aX+b\}</script><h3 id="一些不等式"><a href="#一些不等式" class="headerlink" title="一些不等式"></a>一些不等式</h3>
                 
             </div>
             <hr/>
@@ -935,7 +557,7 @@ sudo barnyard2 -c &#x2F;etc&#x2F;snort&#x2F;barnyard2.conf -d &#x2F;var&#x2F;log
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://natt1e.github.io/2023/05/09/ubuntu-snort-barnyard2-base/">https://natt1e.github.io/2023/05/09/ubuntu-snort-barnyard2-base/</a>
+                    <a href="https://natt1e.github.io/2023/06/20/probabilityandstatistics/">https://natt1e.github.io/2023/06/20/probabilityandstatistics/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -973,16 +595,8 @@ sudo barnyard2 -c &#x2F;etc&#x2F;snort&#x2F;barnyard2.conf -d &#x2F;var&#x2F;log
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Ubuntu/">
-                                    <span class="chip bg-color">Ubuntu</span>
-                                </a>
-                            
-                                <a href="/tags/snort/">
-                                    <span class="chip bg-color">snort</span>
-                                </a>
-                            
-                                <a href="/tags/mysql/">
-                                    <span class="chip bg-color">mysql</span>
+                                <a href="/tags/math/">
+                                    <span class="chip bg-color">math</span>
                                 </a>
                             
                         </div>
@@ -1152,9 +766,56 @@ sudo barnyard2 -c &#x2F;etc&#x2F;snort&#x2F;barnyard2.conf -d &#x2F;var&#x2F;log
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2023/06/20/probabilityandstatistics/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="Probability_Statistics">
+                        
+                        <span class="card-title">Probability_Statistics</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            感情也服从大数定理吗？
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-06-20
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            Natt1e
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/math/">
+                        <span class="chip bg-color">math</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
             <div class="card">
                 <a href="/2023/05/13/virtualvirus/">
                     <div class="card-image">
@@ -1171,9 +832,9 @@ sudo barnyard2 -c &#x2F;etc&#x2F;snort&#x2F;barnyard2.conf -d &#x2F;var&#x2F;log
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-05-13
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-05-13
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -1187,50 +848,6 @@ sudo barnyard2 -c &#x2F;etc&#x2F;snort&#x2F;barnyard2.conf -d &#x2F;var&#x2F;log
                     
                     <a href="/tags/virus/">
                         <span class="chip bg-color">virus</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2023/05/05/how-to-git/">
-                    <div class="card-image">
-                        
-                        <img src="https://s1.ax1x.com/2023/05/12/p9y8WmF.jpg" class="responsive-img" alt="How to git">
-                        
-                        <span class="card-title">How to git</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            git可以让代码回到之前的状态，我的意思是只能让代码回到以前的状态
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-05-05
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-user fa-fw"></i>
-                            Natt1e
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/git/">
-                        <span class="chip bg-color">git</span>
                     </a>
                     
                 </div>
@@ -1398,6 +1015,13 @@ sudo barnyard2 -c &#x2F;etc&#x2F;snort&#x2F;barnyard2.conf -d &#x2F;var&#x2F;log
 
 </main>
 
+
+<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
+    });
+</script>
 
 
 

@@ -491,7 +491,7 @@
 <p>运行成功后，应该会持续间隔地弹出窗口，提示病毒未被清除。</p>
 <p><img src="/2023/05/13/virtualvirus/going.png"></p>
 <p>实际上，病毒运行后，会把自己备份，复制到<code>C:\WINDOWS\system32\explorer.exe</code> 和 <code>C:\WINDOWS\taskmgr.exe</code> 。<code>explorer.exe</code>是Windows操作系统的资源管理器，而<code>taskmgr.exe</code>是Windows操作系统的任务管理器，这两个进程的名称与系统进程相同，起到了混淆的作用。这两个进程还会互相监控，一旦一个被杀死，另一个进程会再次启动它。此外，病毒还会修改注册表，使<code>C:\WINDOWS\system32\explorer.exe</code> 和 <code>C:\WINDOWS\taskmgr.exe</code> 随系统自动启动。</p>
-<h3 id="病毒清除"><a href="#病毒清除" class="headerlink" title="病毒清除"></a>病毒清除</h3><h4 id="结束进程"><a href="#结束进程" class="headerlink" title="结束进程"></a>结束进程</h4><p>结束taskmgr.exe和explorer.exe。由于这两个进程会互相监控，不能单独结束其中的一个。用Windows资源管理器中的结束进程数的方法，可以一起结束。但由于不知道进程的路径，可能误结束系统进程。</p>
+<h3 id="病毒清除"><a href="#病毒清除" class="headerlink" title="病毒清除"></a>病毒清除</h3><h4 id="结束进程"><a href="#结束进程" class="headerlink" title="结束进程"></a>结束进程</h4><p>结束taskmgr.exe和explorer.exe。由于这两个进程会互相监控，不能单独结束其中的一个。用Windows资源管理器中的结束进程树的方法，可以一起结束。但由于不知道进程的路径，可能误结束系统进程。</p>
 <p><img src="/2023/05/13/virtualvirus/end.png"></p>
 <h4 id="修改注册表"><a href="#修改注册表" class="headerlink" title="修改注册表"></a>修改注册表</h4><p><code>win+R</code>输入regedit启动注册表编辑器，在<code>HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Run</code>下删除<code>explorer</code>和<code>taskmgr</code>两个键，防止病毒自动启动</p>
 <p><img src="/2023/05/13/virtualvirus/regedit.png"></p>
@@ -735,29 +735,29 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2023/05/13/virtualvirus/">
+                <a href="/2023/06/20/probabilityandstatistics/">
                     <div class="card-image">
                         
-                        <img src="https://s1.ax1x.com/2023/05/13/p96GIwF.jpg" class="responsive-img" alt="VirtualVirus Cleaning">
                         
-                        <span class="card-title">VirtualVirus Cleaning</span>
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="Probability_Statistics">
+                        
+                        <span class="card-title">Probability_Statistics</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            高超的病毒像爱一样难以移除
+                            感情也服从大数定理吗？
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-05-13
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-06-20
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-user fa-fw"></i>
@@ -766,12 +766,11 @@
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/virus/">
-                        <span class="chip bg-color">virus</span>
+                    <a href="/tags/math/">
+                        <span class="chip bg-color">math</span>
                     </a>
                     
                 </div>
@@ -1058,7 +1057,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">4.6k</span>&nbsp;字
+                class="white-color">5.5k</span>&nbsp;字
             
             
             
@@ -1278,6 +1277,21 @@ $(function () {
     <script src="/libs/instantpage/instantpage.js" type="module"></script>
     
 
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 </body>
 
 </html>
