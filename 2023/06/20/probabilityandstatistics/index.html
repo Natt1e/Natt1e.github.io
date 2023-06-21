@@ -310,7 +310,7 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/19.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('https://s1.ax1x.com/2023/06/22/pCJF6ht.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
@@ -456,7 +456,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    927
+                    1.3k
                 </div>
                 
 
@@ -483,6 +483,7 @@
             <div id="articleContent">
                 <h3 id="体会"><a href="#体会" class="headerlink" title="体会"></a>体会</h3><p>第一次考试的时候感觉很顺利，自认为每个题都会做且都做对了，提前交卷走人。但结果不甚理想，一直以来我都认为本人知识掌握得十分熟练，乃粗心大意所致。但当我重新学习过后，我才发现其实有很多疏漏，很多知识我都不甚理解，原来并不是粗心大意，而就是知识理解得不透彻、不到位。在重新学习的过程中，我真的学到了很多。</p>
 <p>其实在开始做题之前，我仍自我感觉良好，对过答案之后才察觉漏洞百出。仅仅五套题，扣的分数已经有大几十分，都是自负所致。做事还是脚踏实地落到实处一点为好。</p>
+<p>其实还有一个小故事。就在我复习概率统计时，班主任请来了保研的学长为我们分享经验。学长在分享面试经验的过程中突施冷箭，把我叫起来回答什么是大数定理，但本人有幸昨天才刚刚看过。希望可以多学习一点数学知识，以减缓被淘汰的速度。</p>
 <p>以下是对这五套题错题的简单回顾与总结：</p>
 <ul>
 <li>概率为0的事件不一定是不可能事件</li>
@@ -531,7 +532,25 @@ Cov(X,Y)=E[(X-EX)(Y-EY)]=EXY-EX \cdot EY</script><script type="math/tex; mode=di
 D(X+Y)=DX+DY+2Cov(X,Y) \\
 D(X-Y)=DX+DY-2Cov(X,Y)</script><p>由XY独立，可以推出Cov(X,Y)=0,反之不然(正态分布除外)</p>
 <script type="math/tex; mode=display">
-\rho_{XY} = \frac{Cov(X,Y)}{\sqrt{DX} \cdot \sqrt{Y}} \\ |\rho|=1 \space等价于 \space P\{Y=aX+b\}</script><h3 id="一些不等式"><a href="#一些不等式" class="headerlink" title="一些不等式"></a>一些不等式</h3>
+\rho_{XY} = \frac{Cov(X,Y)}{\sqrt{DX} \cdot \sqrt{Y}} \\ |\rho|=1 \space等价于 \space P\{Y=aX+b\}</script><h3 id="统计量的分布"><a href="#统计量的分布" class="headerlink" title="统计量的分布"></a>统计量的分布</h3><h5 id="卡方分布"><a href="#卡方分布" class="headerlink" title="卡方分布"></a>卡方分布</h5><script type="math/tex; mode=display">
+\chi^2 = \sum X_i^2 \\ X_i \sim N(0,1)</script><p>卡方分布并不对称</p>
+<script type="math/tex; mode=display">
+X \sim \chi^2(n) \\EX=n \\DX=2n</script><script type="math/tex; mode=display">
+\frac{(n-1)S^2}{\sigma^2} \sim \chi^2(n-1)</script><h5 id="t分布"><a href="#t分布" class="headerlink" title="t分布"></a>t分布</h5><script type="math/tex; mode=display">
+X \sim N(0,1) \\ Y \sim \chi^2(n)
+\\ T=\frac{X}{\sqrt{\frac{Y}{n}}} 
+\\ T \sim t(n)</script><p>t分布是对称的</p>
+<h5 id="F分布"><a href="#F分布" class="headerlink" title="F分布"></a>F分布</h5><script type="math/tex; mode=display">
+X \sim \chi^2(n_1)
+\\ Y \sim \chi^2(n_2)
+\\ XY相互独立
+\\F=\frac{X/n_1}{Y/n_2}
+\\ F \sim F(n_1,n_2)</script><h3 id="一些不等式"><a href="#一些不等式" class="headerlink" title="一些不等式"></a>一些不等式</h3><h5 id="柯西-施瓦茨不等式"><a href="#柯西-施瓦茨不等式" class="headerlink" title="柯西-施瓦茨不等式"></a>柯西-施瓦茨不等式</h5><script type="math/tex; mode=display">
+|E(XY)| \leq \sqrt{EX^2} \cdot \sqrt{EY^2}</script><script type="math/tex; mode=display">
+\sqrt{E(|X+Y|^2)} \leq \sqrt{EX^2} + \sqrt{EY^2}</script><h5 id="马尔可夫不等式"><a href="#马尔可夫不等式" class="headerlink" title="马尔可夫不等式"></a>马尔可夫不等式</h5><script type="math/tex; mode=display">
+P\{|X| \geq \epsilon \} \leq \frac{E|X|^k}{\epsilon^k}</script><h5 id="切比雪夫不等式"><a href="#切比雪夫不等式" class="headerlink" title="切比雪夫不等式"></a>切比雪夫不等式</h5><script type="math/tex; mode=display">
+P\{|X-EX| \geq \epsilon\} \leq \frac{DX}{\epsilon^2}</script><h3 id="中心极限定理"><a href="#中心极限定理" class="headerlink" title="中心极限定理"></a>中心极限定理</h3><p>如果一个量是由大量相互独立的随机因素所造成的，而每一个因素在总量中起的作用又较小，那么这种量通常服从或近似服从正态分布。</p>
+
                 
             </div>
             <hr/>
@@ -774,8 +793,7 @@ D(X-Y)=DX+DY-2Cov(X,Y)</script><p>由XY独立，可以推出Cov(X,Y)=0,反之不
                 <a href="/2023/06/20/probabilityandstatistics/">
                     <div class="card-image">
                         
-                        
-                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="Probability_Statistics">
+                        <img src="https://s1.ax1x.com/2023/06/22/pCJF6ht.jpg" class="responsive-img" alt="Probability_Statistics">
                         
                         <span class="card-title">Probability_Statistics</span>
                     </div>
@@ -1085,7 +1103,7 @@ D(X-Y)=DX+DY-2Cov(X,Y)</script><p>由XY独立，可以推出Cov(X,Y)=0,反之不
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">5.5k</span>&nbsp;字
+                class="white-color">5.8k</span>&nbsp;字
             
             
             
