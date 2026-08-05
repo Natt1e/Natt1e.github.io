@@ -6,9 +6,13 @@
 # `jekyll serve`. If you change this file, please restart the server process.
 
 # Site Settings
-title                    : "Lorem ipsum"
-description              : "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. "
-repository               : "RayeRen/acad-homepage.github.io"
+# TODO: Replace "Natt1e" with your preferred full name when ready.
+title                    : "HongYue Yu"
+# TODO: Replace this with one sentence describing your current position and research focus.
+description              : "Focusing on automatic software engineering"
+repository               : "Natt1e/Natt1e.github.io"
+url                      : "https://natt1e.github.io"
+baseurl                  : ""
 google_scholar_stats_use_cdn : true
 
 # google analytics
@@ -21,14 +25,18 @@ baidu_site_verification  :  # get baidu_site_verification from https://ziyuan.ba
 
 # Site Author
 author:
-  name             : "Lorem ipsum"
-  avatar           : "images/android-chrome-512x512.png"
-  bio              : "Lorem ipsum College"
-  location         : "Beijing, China"
+  # TODO: Replace with your preferred full name.
+  name             : "Hongyue Yu"
+  # TODO: Replace this image with a professional square headshot.
+  avatar           : "images/profile.jpg"
+  # TODO: Replace with your current role and institution.
+  bio              : "Master student @ Beihang University"
+  # TODO: Add your city and country, or leave blank.
+  location         :
   employer         :
   pubmed           : 
-  googlescholar    : "https://scholar.google.com/citations?user=YOUR_GOOGLE_SCHOLAR_ID"
-  email            : "Lorem@ipsum.com"
+  googlescholar    : "https://scholar.google.com/citations?user=QOAtDIoAAAAJ&hl=en"
+  email            : "Natt1e@buaa.edu.cn"
   researchgate     :  # e.g., "https://www.researchgate.net/profile/yourprofile"
   uri              :
   bitbucket        :
@@ -37,15 +45,15 @@ author:
   flickr           :
   facebook         :
   foursquare       :
-  github           : # e.g., "github username"
+  github           : "Natt1e" # GitHub username
   google_plus      :
   keybase          :
   instagram        :
   impactstory      : # e.g., "https://profiles.impactstory.org/u/xxxx-xxxx-xxxx-xxxx"
   lastfm           :
   linkedin         : # e.g., "linkedin username"
-  dblp             : # e.g., "https://dblp.org/pid/xx/xxxx.html"
-  orcid            : # e.g., "https://orcid.org/xxxx"
+  dblp             : "https://dblp.org/pid/400/1949.html"
+  orcid            : "https://orcid.org/0009-0002-4569-941X"
   pinterest        :
   soundcloud       :
   stackoverflow    : # http://stackoverflow.com/users/123456/username

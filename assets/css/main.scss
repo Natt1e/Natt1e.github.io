@@ -107,3 +107,18 @@ h1:before, .anchor:before {
     background-color: #00369f;
     font-size: .8em;
 }
+
+// Compact venue label used before publications without thumbnail cards.
+.venue-badge {
+    display: inline-block;
+    padding: .12em .55em;
+    margin-right: .35em;
+    border-radius: .2em;
+    color: #fff;
+    background-color: #00369f;
+    font-size: .75em;
+    font-weight: 600;
+    line-height: 1.4;
+    vertical-align: .08em;
+    white-space: nowrap;
+}

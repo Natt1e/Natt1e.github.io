@@ -8,51 +8,55 @@ redirect_from:
   - /about.html
 ---
 
-{% if site.google_scholar_stats_use_cdn %}
-{% assign gsDataBaseUrl = "https://cdn.jsdelivr.net/gh/" | append: site.repository | append: "@" %}
-{% else %}
-{% assign gsDataBaseUrl = "https://raw.githubusercontent.com/" | append: site.repository | append: "/" %}
-{% endif %}
-{% assign url = gsDataBaseUrl | append: "google-scholar-stats/gs_data_shieldsio.json" %}
-
 <span class='anchor' id='about-me'></span>
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. Suspendisse condimentum, libero vel tempus mattis, risus risus vulputate libero, elementum fermentum mi neque vel nisl. Maecenas facilisis maximus dignissim. Curabitur mattis vulputate dui, tincidunt varius libero luctus eu. Mauris mauris nulla, scelerisque eget massa id, tincidunt congue felis. Sed convallis tempor ipsum rhoncus viverra. Pellentesque nulla orci, accumsan volutpat fringilla vitae, maximus sit amet tortor. Aliquam ultricies odio ut volutpat scelerisque. Donec nisl nisl, porttitor vitae pharetra quis, fringilla sed mi. Fusce pretium dolor ut aliquam consequat. Cras volutpat, tellus accumsan mattis molestie, nisl lacus tempus massa, nec malesuada tortor leo vel quam. Aliquam vel ex consectetur, vehicula leo nec, efficitur eros. Donec convallis non urna quis feugiat.
+<!--
+TODO: Replace the paragraph below with a concise 100-250 word introduction.
+Recommended order: current position and institution; research focus; prior
+background; the kind of PhD opportunities you are seeking.
+-->
+I am an Master student at [Beihang University](https://ev.buaa.edu.cn), advised by Prof. [Yuan Yuan](https://scse.buaa.edu.cn/info/1078/8386.htm). I received my B.E. in Computer Science and Engineering from [Beihang University](https://ev.buaa.edu.cn). My research spans automated software engineering and code generation.
 
-My research interest includes neural machine translation and computer vision. I have published more than 100 papers at the top international AI conferences with total <a href='https://scholar.google.com/citations?user=DhtAFkwAAAAJ'>google scholar citations <strong><span id='total_cit'>260000+</span></strong></a> (You can also use google scholar badge <a href='https://scholar.google.com/citations?user=DhtAFkwAAAAJ'><img src="https://img.shields.io/endpoint?url={{ url | url_encode }}&logo=Google%20Scholar&labelColor=f6f6f6&color=9cf&style=flat&label=citations"></a>).
+You can find my work on [Google Scholar](https://scholar.google.com/citations?user=QOAtDIoAAAAJ&hl=en), [DBLP](https://dblp.org/pid/400/1949.html), [ORCID](https://orcid.org/0009-0002-4569-941X), and [GitHub](https://github.com/Natt1e).
+
+<span class='anchor' id='publications'></span>
+
+# Publications
+
+<!--
+TODO: Add publications in reverse chronological order. Bold your own name.
+Suggested format:
+- <span class="venue-badge">VENUE YEAR</span> [Paper Title](PAPER_URL), Author A, **Your Name**, Author C. [[Code](CODE_URL)] [[Project](PROJECT_URL)]
+-->
+
+## Published
+- <span class="venue-badge">EMNLP 2026</span> [TDD-Agent: Test-Driven Reasoning for Code Generation](), **Hongyue Yu**, Kefan Li, Jiakun Li, Hongzheng Chai, et al.
+- <span class="venue-badge">EMNLP 2026</span> [RepoNav: From Snippet Retrieval to File-Centered Repository Navigation for Code Agents](), Hongzheng Chai, Jiakun Li, **Hongyue Yu**, Yuan Yuan.
+- <span class="venue-badge">ASE 2026</span> [Escaping the Self-Repair Trap: Improving Test Oracle Generation via Dual-Context Awareness](), Kefan Li, **Hongyue Yu**, Yuan Yuan.
+- <span class="venue-badge">ACL 2026</span> [Efficient Test-Time Scaling via Temporal Reasoning Aggregation](https://aclanthology.org/2026.findings-acl.651/), Jiakun Li, Xingwei He, Kefan Li, Hongzheng Chai, **Hongyue Yu**, et al.
+- <span class="venue-badge">IEEE TEVC</span> [CoCoEvo: Co-Evolution of Programs and Test Cases to Enhance Code Generation](https://arxiv.org/abs/2502.10802), Kefan Li, Yuan Yuan, **Hongyue Yu**, et al.
+
+## Under Review
+- <span class="venue-badge">ICSE 2027</span> [Passing is Not Proof: How LLM Agents Decide under 
+  Self-Generated Test Feedback](), Kefan Li, **Hongyue Yu**, Yuan Yuan.
+- <span class="venue-badge">IEEE TSE</span> [Beyond Fixed Tests: Repository-Level Issue Resolution as Coevolution of Code and Behavioral Constraints](), Kefan Li, **Hongyue Yu**, et al.
 
 
-# 🔥 News
-- *2022.02*: &nbsp;🎉🎉 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. 
-- *2022.02*: &nbsp;🎉🎉 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. 
+<span class='anchor' id='education'></span>
 
-# 📝 Publications 
+# Education
 
-<div class='paper-box'><div class='paper-box-image'><div><div class="badge">CVPR 2016</div><img src='images/500x300.png' alt="sym" width="100%"></div></div>
-<div class='paper-box-text' markdown="1">
+<!-- TODO: Add degrees in reverse chronological order. -->
 
-[Deep Residual Learning for Image Recognition](https://openaccess.thecvf.com/content_cvpr_2016/papers/He_Deep_Residual_Learning_CVPR_2016_paper.pdf)
+- *2024.09 - Present*, Master, Beihang University, Beijing. Advisor: Prof. [Yuan Yuan](https://scse.buaa.edu.cn/info/1078/8386.htm).
+- *2020.09 - 2024.06*, Undergraduate, Beihang University, Beijing.
+- *2017.09 - 2020.07*, Hengshui High School, Hengshui.
 
-**Kaiming He**, Xiangyu Zhang, Shaoqing Ren, Jian Sun
+<span class='anchor' id='work-experience'></span>
 
-[**Project**](https://scholar.google.com/citations?view_op=view_citation&hl=zh-CN&user=DhtAFkwAAAAJ&citation_for_view=DhtAFkwAAAAJ:ALROH1vI_8AC) <strong><span class='show_paper_citations' data='DhtAFkwAAAAJ:ALROH1vI_8AC'></span></strong>
-- Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. 
-</div>
-</div>
+# Internships
 
-- [Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet](https://github.com), A, B, C, **CVPR 2020**
+<!-- TODO: Add relevant employment and internships in reverse chronological order. Delete this section and its navigation item if you do not need it. -->
 
-# 🎖 Honors and Awards
-- *2021.10* Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. 
-- *2021.09* Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. 
-
-# 📖 Educations
-- *2019.06 - 2022.04 (now)*, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. 
-- *2015.09 - 2019.06*, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. 
-
-# 💬 Invited Talks
-- *2021.06*, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet. 
-- *2021.03*, Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus ornare aliquet ipsum, ac tempus justo dapibus sit amet.  \| [\[video\]](https://github.com/)
-
-# 💻 Internships
-- *2019.05 - 2020.02*, [Lorem](https://github.com/), China.
+- *2025.11 - 2026.02*, [Tokenifity AI](https://www.tokfinity.com), Beijing. Contributed to **InfCode**, which achieved 1st on  [Multi-SWE-bench](https://multi-swe-bench.github.io/#)(Java/C++) leaderboards.
+- *2025.04 - 2025.07*, [4Paradigm](https://www.4paradigm.com), Beijing.
