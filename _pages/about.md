@@ -30,18 +30,18 @@ Suggested format:
 -->
 
 ## Published
-- <span class="venue-badge">EMNLP 2026</span> [TDD-Agent: Test-Driven Reasoning for Code Generation](), **Hongyue Yu**, Kefan Li, Jiakun Li, Hongzheng Chai, et al.
+- <span class="venue-badge">EMNLP 2026</span> [TDD-Agent: Test-Driven Reasoning for Code Generation](https://huggingface.co/datasets/Natt1e/assets/blob/main/paper_2.pdf), **Hongyue Yu**, Kefan Li, Jiakun Li, Hongzheng Chai, et al.
 - <span class="venue-badge">EMNLP 2026</span> [RepoNav: From Snippet Retrieval to File-Centered Repository Navigation for Code Agents](), Hongzheng Chai, Jiakun Li, **Hongyue Yu**, Yuan Yuan.
-- <span class="venue-badge">ASE 2026</span> [Escaping the Self-Repair Trap: Improving Test Oracle Generation via Dual-Context Awareness](), Kefan Li, **Hongyue Yu**, Yuan Yuan.
+- <span class="venue-badge">ASE 2026</span> [Escaping the Self-Repair Trap: Improving Test Oracle Generation via Dual-Context Awareness](https://arxiv.org/abs/2608.05917), Kefan Li, **Hongyue Yu**, Yuan Yuan.
 - <span class="venue-badge">ACL 2026</span> [Efficient Test-Time Scaling via Temporal Reasoning Aggregation](https://aclanthology.org/2026.findings-acl.651/), Jiakun Li, Xingwei He, Kefan Li, Hongzheng Chai, **Hongyue Yu**, et al.
 - <span class="venue-badge">IEEE TEVC</span> [CoCoEvo: Co-Evolution of Programs and Test Cases to Enhance Code Generation](https://arxiv.org/abs/2502.10802), Kefan Li, Yuan Yuan, **Hongyue Yu**, et al.
 
 ## Under Review
-- <span class="venue-badge">ICSE 2027</span> [Passing is Not Proof: How LLM Agents Decide under 
-  Self-Generated Test Feedback](), Kefan Li, **Hongyue Yu**, Yuan Yuan.
-- <span class="venue-badge">IEEE TSE</span> [Beyond Fixed Tests: Repository-Level Issue Resolution as Coevolution of Code and Behavioral Constraints](), Kefan Li, **Hongyue Yu**, et al.
+- <span class="venue-badge">Under Review</span> [Passing is Not Proof: How LLM Agents Decide under 
+  Self-Generated Test Feedback](https://huggingface.co/datasets/Natt1e/assets/blob/main/paper_3.pdf), Kefan Li, **Hongyue Yu**, Yuan Yuan.
+- <span class="venue-badge">IEEE TSE</span> [Beyond Fixed Tests: Repository-Level Issue Resolution as Coevolution of Code and Behavioral Constraints](https://huggingface.co/datasets/Natt1e/assets/blob/main/paper_1.pdf), Kefan Li, **Hongyue Yu**, et al.
 
-
+·
 <span class='anchor' id='education'></span>
 
 # Education
