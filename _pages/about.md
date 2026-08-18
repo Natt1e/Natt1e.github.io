@@ -40,8 +40,6 @@ Suggested format:
 - <span class="venue-badge">Under Review</span> [Passing is Not Proof: How LLM Agents Decide under 
   Self-Generated Test Feedback](https://huggingface.co/datasets/Natt1e/assets/blob/main/paper_3.pdf), Kefan Li, **Hongyue Yu**, Yuan Yuan.
 - <span class="venue-badge">IEEE TSE</span> [Beyond Fixed Tests: Repository-Level Issue Resolution as Coevolution of Code and Behavioral Constraints](https://huggingface.co/datasets/Natt1e/assets/blob/main/paper_1.pdf), Kefan Li, **Hongyue Yu**, et al.
-
-·
 <span class='anchor' id='education'></span>
 
 # Education
